@@ -2,6 +2,8 @@
 # http://rptl.io/configtxt
 # Some settings may impact device functionality. See link above for details
 
+disable_splash=1
+
 # Uncomment some or all of these to enable the optional hardware interfaces
 #dtparam=i2c_arm=on
 #dtparam=i2s=on
