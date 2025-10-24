@@ -1,0 +1,11 @@
+[Unit]
+Description=QLC+ Headless with Web API
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/qlcplus --operate --web --open /home/nordic-escape/dmx/battle.qxw --platform offscreen
+Restart=always
+User=nordic-escape
+
+[Install]
+WantedBy=multi-user.target
