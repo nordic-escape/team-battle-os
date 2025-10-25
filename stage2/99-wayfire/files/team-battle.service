@@ -1,15 +1,18 @@
 [Unit]
 Description=Team-Battle
-After=docker.service
+After=docker.service network-online.target
 Requires=docker.service
+Wants=network-online.target
 
 [Service]
+Type=oneshot
+RemainAfterExit=yes
 WorkingDirectory=/home/nordic-escape
-ExecStartPre=/usr/bin/docker compose pull
+ExecStartPre=/bin/bash -c 'if ping -c 1 -W 5 8.8.8.8 >/dev/null 2>&1; then echo "Internet available, pulling latest images..."; /usr/bin/docker compose pull; else echo "No internet connection, using local images..."; fi'
 ExecStart=/usr/bin/docker compose up -d
 ExecStop=/usr/bin/docker compose down
-Restart=always
-TimeoutStartSec=0
+Restart=on-failure
+TimeoutStartSec=60
 
 [Install]
 WantedBy=multi-user.target

@@ -1,5 +1,9 @@
 #!/bin/bash -e
 
+# Install argon case
+curl https://download.argon40.com/argon-eeprom.sh | bash
+curl https://download.argon40.com/argonneo5.sh | bash
+
 # Install wayland
 apt-get install -y wayfire seatd xdg-user-dirs
 
@@ -21,4 +25,4 @@ sudo apt-get install -y docker-ce docker-ce-cli docker-compose-plugin
 
 # Install QLC+
 sudo apt-get install -y qlcplus libgl1 libglu1-mesa
-sudo ln -s /usr/lib/mesa-diverted/aarch64-linux-gnu/libGL.so.1 /usr/lib/aarch64-linux-gnu/libGL.so.1
+sudo ln -sf /usr/lib/mesa-diverted/aarch64-linux-gnu/libGL.so.1 /usr/lib/aarch64-linux-gnu/libGL.so.1
